@@ -1,0 +1,10 @@
+export const CALL_REQUEST = 'CALL_REQUEST';
+export const DENIED = 'DENIED';
+export const ACCEPT_CALL = 'ACCEPT_CALL';
+export const SDP_OFFER = 'SDP_OFFER';
+export const ICE_CANDIDATE = 'ICE_CANDIDATE';
+export const END_CALL = 'END_CALL';
+export const ADD_ENDPOINT = 'ADD_ENDPOINT';
+export const START_VIDEO = 'START_VIDEO';
+export const VIDEO_ERROR = 'VIDEO_ERROR';
+export const RECIEVE_VIDEO = 'RECIEVE_VIDEO';
