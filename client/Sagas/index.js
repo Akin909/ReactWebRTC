@@ -1,25 +1,27 @@
-import { call, put, takeLatest } from 'redux-saga';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { START_VIDEO, VIDEO_ERROR } from './../constants';
+import { START_VIDEO, VIDEO_ERROR, RECIEVE_VIDEO } from './../constants';
 
 const constraints = {
   video: true,
-  audio: true,
+  //audio: true,
 };
 const getVideo = () => navigator.mediaDevices.getUserMedia(constraints);
+const startVideo = videoFeed =>
+  videoFeed.then(feed => feed.window.URL.createObjectURL(feed));
 
 function* getWebcamFeed() {
-  console.log('saga');
   try {
     const videoFeed = yield call(getVideo);
     //const startVideo = yield call(startVideo, videoFeed);
+    const video = window.URL.createObjectURL(videoFeed);
     yield put({
       type: RECIEVE_VIDEO,
-      videoFeed,
-      //startVideo,
+      videoFeed: video,
+      startVideo,
     });
   } catch (err) {
-    yield put({ type: VIDEO_ERROR });
+    yield put({ type: VIDEO_ERROR, message: err });
   }
 }
 

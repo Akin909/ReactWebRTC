@@ -5,7 +5,6 @@ class Endpoint extends Component {
     super(endpointName);
     this._name = endpointName;
   }
-  /*A list of all the videoEndpoint subclass objects that are created*/
 
   /**
    * This function will be overwritten in the video endpoint subclass

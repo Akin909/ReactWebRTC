@@ -1,35 +1,33 @@
-import {
-  CALL_REQUEST,
-  DENIED,
-  SDP_OFFER,
-  SDP_ANSWER,
-  ICE_CANDIDATE,
-  END_CALL,
-  ACCEPT_CALL,
-  ADD_ENDPOINT,
-} from './../constants';
+import * as c from './../constants';
 
-export default function(state, action) {
-  console.log('state', state);
+export default function(state = {}, action) {
   switch (action.type) {
-    case ADD_ENDPOINT:
+    case c.ADD_ENDPOINT:
       return {
         ...state,
         endpoints: [...state.endpoints, action.endpoint],
       };
-    case CALL_REQUEST:
+    case c.START_VIDEO:
       break;
-    case DENIED:
+    case c.RECIEVE_VIDEO:
+      return {
+        ...state,
+        videoFeed: action.videoFeed,
+        startVideo: action.startVideo,
+      };
+    case c.CALL_REQUEST:
       break;
-    case ACCEPT_CALL:
+    case c.DENIED:
       break;
-    case SDP_OFFER:
+    case c.ACCEPT_CALL:
       break;
-    case SDP_ANSWER:
+    case c.SDP_OFFER:
       break;
-    case ICE_CANDIDATE:
+    case c.SDP_ANSWER:
       break;
-    case END_CALL:
+    case c.ICE_CANDIDATE:
+      break;
+    case c.END_CALL:
       break;
     default:
       return state;
